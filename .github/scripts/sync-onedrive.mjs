@@ -2,47 +2,65 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
-const SOURCE_URL =
-  "https://1drv.ms/x/c/4560751afe576670/IQBwZlf-GnVgIIBFLAMAAAAAAdAuxtxL8NaM5-kU-dsTUvA?e=4zc7if&download=1";
+const SHARE_URL =
+  "https://1drv.ms/x/c/4560751afe576670/IQBwZlf-GnVgIIBFLAMAAAAAAdAuxtxL8NaM5-kU-dsTUvA?e=4zc7if";
 
-const DESTINATION_PATH = "data/venteliste.xlsx";
+const DESTINATION = "data/venteliste.xlsx";
 
 async function main() {
-  console.log("Downloading Excel workbook from OneDrive...");
+  const urls = [
+    `${SHARE_URL}&download=1`,
+    SHARE_URL,
+  ];
 
-  const response = await fetch(SOURCE_URL, {
-    redirect: "follow",
-    headers: {
-      "User-Agent": "Mozilla/5.0",
-    },
-  });
+  let workbook;
 
-  if (!response.ok) {
-    throw new Error(`Download failed: HTTP ${response.status}`);
+  for (const url of urls) {
+    console.log(`Trying ${new URL(url).hostname}...`);
+
+    const response = await fetch(url, {
+      redirect: "follow",
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
+        "Accept": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream,*/*",
+      },
+    });
+
+    console.log(`HTTP status: ${response.status}`);
+    console.log(`Final URL: ${response.url}`);
+    console.log(`Content-Type: ${response.headers.get("content-type")}`);
+
+    if (!response.ok) {
+      await response.body?.cancel();
+      continue;
+    }
+
+    const bytes = Buffer.from(await response.arrayBuffer());
+
+    // An XLSX file is a ZIP archive.
+    if (
+      bytes.length >= 4 &&
+      bytes[0] === 0x50 &&
+      bytes[1] === 0x4b
+    ) {
+      workbook = bytes;
+      break;
+    }
+
+    console.log("Response was not an XLSX file; trying the next URL.");
   }
 
-  const contentType = response.headers.get("content-type") || "";
-  const file = Buffer.from(await response.arrayBuffer());
-
-  // An .xlsx file is a ZIP archive and normally starts with PK.
-  if (
-    file.length < 4 ||
-    file[0] !== 0x50 ||
-    file[1] !== 0x4b
-  ) {
+  if (!workbook) {
     throw new Error(
-      `The response was not an Excel workbook. ` +
-      `Content-Type: ${contentType}. ` +
-      `OneDrive may have returned an HTML page instead.`
+      "Could not download the workbook directly. " +
+      "Check the logged final URL and response status."
     );
   }
 
-  await mkdir(dirname(DESTINATION_PATH), { recursive: true });
-  await writeFile(DESTINATION_PATH, file);
+  await mkdir(dirname(DESTINATION), { recursive: true });
+  await writeFile(DESTINATION, workbook);
 
-  console.log(
-    `Downloaded ${file.length} bytes to ${DESTINATION_PATH}`
-  );
+  console.log(`Saved ${workbook.length} bytes to ${DESTINATION}`);
 }
 
 main().catch(error => {
