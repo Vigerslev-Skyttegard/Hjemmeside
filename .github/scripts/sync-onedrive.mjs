@@ -3,7 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
 const SHARE_URL =
-  "https://1drv.ms/x/c/4560751afe576670/IQBwZlf-GnVgIIBFLAMAAAAAAdAuxtxL8NaM5-kU-dsTUvA?e=4zc7if";
+  "https://1drv.ms/x/c/4560751afe576670/IQBwZlf-GnVgIIBFLAMAAAAAAacgNjZehh4H7Nvmzuz5pZA?e=VpDpPb";
 
 const DESTINATION = "data/venteliste.xlsx";
 
