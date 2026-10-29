@@ -8,59 +8,54 @@ const SHARE_URL =
 const DESTINATION = "data/venteliste.xlsx";
 
 async function main() {
-  const urls = [
-    `${SHARE_URL}&download=1`,
-    SHARE_URL,
-  ];
+  const shareToken =
+    "u!" +
+    Buffer.from(SHARE_URL, "utf8")
+      .toString("base64")
+      .replace(/=/g, "")
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_");
 
-  let workbook;
+  // Try the OneDrive personal API directly, without browser redirects.
+  const url =
+    `https://api.onedrive.com/v1.0/shares/${shareToken}/root/content`;
 
-  for (const url of urls) {
-    console.log(`Trying ${new URL(url).hostname}...`);
+  console.log("Requesting workbook from the OneDrive API...");
 
-    const response = await fetch(url, {
-      redirect: "follow",
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
-        "Accept": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream,*/*",
-      },
-    });
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/octet-stream",
+    },
+    redirect: "follow",
+  });
 
-    console.log(`HTTP status: ${response.status}`);
-    console.log(`Final URL: ${response.url}`);
-    console.log(`Content-Type: ${response.headers.get("content-type")}`);
-
-    if (!response.ok) {
-      await response.body?.cancel();
-      continue;
-    }
-
-    const bytes = Buffer.from(await response.arrayBuffer());
-
-    // An XLSX file is a ZIP archive.
-    if (
-      bytes.length >= 4 &&
-      bytes[0] === 0x50 &&
-      bytes[1] === 0x4b
-    ) {
-      workbook = bytes;
-      break;
-    }
-
-    console.log("Response was not an XLSX file; trying the next URL.");
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(
+      `OneDrive API returned HTTP ${response.status}: ` +
+      details.slice(0, 500)
+    );
   }
 
-  if (!workbook) {
+  const bytes = Buffer.from(await response.arrayBuffer());
+
+  // Validate that the response is an XLSX ZIP archive.
+  if (
+    bytes.length < 4 ||
+    bytes[0] !== 0x50 ||
+    bytes[1] !== 0x4b
+  ) {
     throw new Error(
-      "Could not download the workbook directly. " +
-      "Check the logged final URL and response status."
+      "The OneDrive API did not return an Excel workbook."
     );
   }
 
   await mkdir(dirname(DESTINATION), { recursive: true });
-  await writeFile(DESTINATION, workbook);
+  await writeFile(DESTINATION, bytes);
 
-  console.log(`Saved ${workbook.length} bytes to ${DESTINATION}`);
+  console.log(
+    `Successfully downloaded ${bytes.length} bytes to ${DESTINATION}`
+  );
 }
 
 main().catch(error => {
