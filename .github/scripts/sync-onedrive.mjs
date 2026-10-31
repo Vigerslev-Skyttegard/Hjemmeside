@@ -21,7 +21,7 @@ const FOLDER_URL =
 
 const FILE_NAME = "Venteliste Parkering.xlsx";
 
-const DESTINATION = "data/venteliste.xlsx";
+const DESTINATION = "Venteliste Parkering.xlsx";
 
 // DanDomain IMAP configuration
 const IMAP_HOST = "post.dandomain.dk";
