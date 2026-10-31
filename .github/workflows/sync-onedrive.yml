@@ -17,7 +17,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install Playwright and IMAP libraries
+      - name: Install Playwright and IMAP dependencies
         run: |
           npm init -y
           npm pkg set type=module
@@ -39,16 +39,11 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Sign in, retrieve MFA email and download workbook
+      - name: Sign in and download workbook
         run: node .github/scripts/sync-onedrive.mjs
         env:
           ONEDRIVE_EMAIL: ${{ secrets.ONEDRIVE_EMAIL }}
           ONEDRIVE_PASSWORD: ${{ secrets.ONEDRIVE_PASSWORD }}
-          MAIL_IMAP_HOST: ${{ secrets.MAIL_IMAP_HOST }}
-          MAIL_IMAP_PORT: ${{ secrets.MAIL_IMAP_PORT }}
-          MAIL_IMAP_USER: ${{ secrets.MAIL_IMAP_USER }}
-          MAIL_IMAP_PASSWORD: ${{ secrets.MAIL_IMAP_PASSWORD }}
-          MAIL_IMAP_FOLDER: INBOX
 
       - name: Commit updated workbook
         run: |
