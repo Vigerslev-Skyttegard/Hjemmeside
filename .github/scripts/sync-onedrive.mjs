@@ -15,11 +15,11 @@ const SHARE_URL =
 const DESTINATION = "data/venteliste.xlsx";
 const AUTH_FILE = "playwright/.auth/onedrive.json";
 
-async function clickOneOf(locators, description) {
+async function clickFirst(locators, description) {
   for (const locator of locators) {
     try {
       await locator.first().click({ timeout: 7000 });
-      console.log(`Selected ${description}`);
+      console.log(`Selected ${description}.`);
       return;
     } catch {
       // Try the next possible label.
@@ -33,19 +33,16 @@ async function main() {
   const encodedAuth = process.env.ONEDRIVE_AUTH_BASE64;
 
   if (!encodedAuth) {
-    throw new Error("Missing GitHub secret ONEDRIVE_AUTH_BASE64.");
+    throw new Error("Missing ONEDRIVE_AUTH_BASE64 GitHub secret.");
   }
 
-  const authState = Buffer.from(encodedAuth, "base64").toString("utf8");
-
-  // Validate the authentication JSON.
-  JSON.parse(authState);
+  const authJson = Buffer.from(encodedAuth, "base64").toString("utf8");
+  JSON.parse(authJson);
 
   await mkdir(dirname(AUTH_FILE), { recursive: true });
-  await writeFile(AUTH_FILE, authState, { mode: 0o600 });
+  await writeFile(AUTH_FILE, authJson, { mode: 0o600 });
 
   const browser = await chromium.launch({ headless: true });
-
   let context;
 
   try {
@@ -64,22 +61,25 @@ async function main() {
       timeout: 90000
     });
 
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(12000);
 
     if (/login\.live\.com|login\.microsoftonline\.com/i.test(page.url())) {
-      throw new Error("Microsoft requires a new login. Authentication has expired.");
+      throw new Error(
+        "Microsoft requires a new sign-in or MFA approval. Refresh the saved authentication session."
+      );
     }
 
-    // Detect common login and access-denied messages.
     const pageText = await page.locator("body").innerText().catch(() => "");
 
     if (/sign in to your account|you don't have access|access denied/i.test(pageText)) {
-      throw new Error("OneDrive is requesting authentication or denying access.");
+      throw new Error(
+        "OneDrive did not grant access. The saved authentication session may have expired."
+      );
     }
 
-    console.log("Looking for Excel's File menu...");
+    console.log("Opening Excel File menu...");
 
-    await clickOneOf([
+    await clickFirst([
       page.getByRole("tab", { name: /^file$/i }),
       page.getByRole("button", { name: /^file$/i }),
       page.getByText(/^file$/i),
@@ -88,16 +88,14 @@ async function main() {
       page.getByText(/^filer$/i)
     ], "File menu");
 
-    await clickOneOf([
+    await clickFirst([
       page.getByRole("menuitem", { name: /save as/i }),
       page.getByText(/^save as$/i),
       page.getByRole("menuitem", { name: /gem som/i }),
       page.getByText(/^gem som$/i)
     ], "Save As");
 
-    console.log("Looking for Download a Copy...");
-
-    let download;
+    console.log("Downloading a copy of the workbook...");
 
     const downloadLocators = [
       page.getByRole("menuitem", { name: /download a copy/i }),
@@ -105,6 +103,8 @@ async function main() {
       page.getByRole("menuitem", { name: /download en kopi/i }),
       page.getByText(/download en kopi/i)
     ];
+
+    let download;
 
     for (const locator of downloadLocators) {
       try {
@@ -116,36 +116,44 @@ async function main() {
         download = await downloadPromise;
         break;
       } catch {
-        // Try another matching control.
+        // Try the next possible command.
       }
     }
 
     if (!download) {
-      throw new Error("Excel did not offer a Download a Copy action.");
+      throw new Error(
+        "Could not find or trigger Excel's Download a Copy command."
+      );
     }
 
     await mkdir(dirname(DESTINATION), { recursive: true });
 
     const temporary = `${DESTINATION}.tmp`;
-
     await download.saveAs(temporary);
 
     const buffer = await readFile(temporary);
 
-    // An XLSX file is a ZIP archive.
+    // XLSX is a ZIP archive and starts with PK.
     if (
       buffer.length < 1000 ||
       buffer[0] !== 0x50 ||
       buffer[1] !== 0x4b
     ) {
       await unlink(temporary).catch(() => {});
-      throw new Error("Downloaded content is not a valid XLSX file.");
+      throw new Error("Downloaded file is not a valid XLSX workbook.");
     }
 
-    // Only replace the existing workbook after validation.
     await rename(temporary, DESTINATION);
 
-    console.log(`Workbook downloaded successfully: ${buffer.length} bytes.`);
+    console.log(
+      `Workbook downloaded successfully (${buffer.length} bytes).`
+    );
+
+    // Save refreshed cookies/storage if Microsoft renewed the session.
+    await context.storageState({
+      path: AUTH_FILE,
+      indexedDB: true
+    });
   } finally {
     if (context) await context.close();
     await browser.close();
