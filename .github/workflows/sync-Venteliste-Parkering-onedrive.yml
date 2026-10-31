@@ -47,7 +47,7 @@ jobs:
 
       - name: Commit updated workbook
         run: |
-          git add -- Venteliste Parkering.xlsx
+          git add -- "Venteliste Parkering.xlsx"
 
           if git diff --cached --quiet; then
             echo "Workbook unchanged. No commit needed."
