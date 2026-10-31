@@ -46,7 +46,7 @@ jobs:
 
       - name: Commit updated files
         run: |
-          git add -A -- '*.xlsx' '*.docx' '*.doc' '*.pdf' '*.pptx'
+          git add -A -- . ':!package.json' ':!package-lock.json'
 
           if git diff --cached --quiet; then
             echo "No file changes. No commit needed."
