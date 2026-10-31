@@ -3,6 +3,7 @@ name: Sync Excel from OneDrive
 
 on:
   workflow_dispatch:
+
   schedule:
     - cron: "0 */6 * * *"
 
@@ -16,6 +17,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
@@ -28,26 +30,32 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install Playwright
+      - name: Install Playwright and IMAP libraries
         run: |
           npm init -y
           npm pkg set type=module
-          npm install --no-save playwright
+          npm install --no-save playwright imapflow mailparser
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Download workbook from OneDrive
+      - name: Sign in, retrieve MFA email and download workbook
         run: node .github/scripts/sync-onedrive.mjs
         env:
-          ONEDRIVE_AUTH_BASE64: ${{ secrets.ONEDRIVE_AUTH_BASE64 }}
+          ONEDRIVE_EMAIL: ${{ secrets.ONEDRIVE_EMAIL }}
+          ONEDRIVE_PASSWORD: ${{ secrets.ONEDRIVE_PASSWORD }}
+          MAIL_IMAP_HOST: ${{ secrets.MAIL_IMAP_HOST }}
+          MAIL_IMAP_PORT: ${{ secrets.MAIL_IMAP_PORT }}
+          MAIL_IMAP_USER: ${{ secrets.MAIL_IMAP_USER }}
+          MAIL_IMAP_PASSWORD: ${{ secrets.MAIL_IMAP_PASSWORD }}
+          MAIL_IMAP_FOLDER: INBOX
 
-      - name: Commit workbook if changed
+      - name: Commit updated workbook
         run: |
           git add -- data/venteliste.xlsx
 
           if git diff --cached --quiet; then
-            echo "Workbook unchanged."
+            echo "Workbook unchanged. No commit needed."
             exit 0
           fi
 
