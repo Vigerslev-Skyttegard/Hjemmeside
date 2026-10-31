@@ -26,7 +26,8 @@ const DESTINATION = "Venteliste Parkering.xlsx";
 // DanDomain IMAP configuration
 const IMAP_HOST = "post.dandomain.dk";
 const IMAP_PORT = 993;
-const IMAP_FOLDER = "INBOX";
+//const IMAP_FOLDER = "INBOX";
+const IMAP_FOLDER = "Email Engangskoder";
 
 // Same credentials for Microsoft and DanDomain
 const EMAIL = process.env.ONEDRIVE_EMAIL;
