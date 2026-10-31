@@ -40,7 +40,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Sign in and download workbook
-        run: node .github/scripts/sync-onedrive.mjs
+        run: node .github/scripts/sync-Venteliste-Parkering-onedrive.mjs
         env:
           ONEDRIVE_EMAIL: ${{ secrets.ONEDRIVE_EMAIL }}
           ONEDRIVE_PASSWORD: ${{ secrets.ONEDRIVE_PASSWORD }}
