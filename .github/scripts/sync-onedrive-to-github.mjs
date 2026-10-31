@@ -32,7 +32,7 @@ const FILES = [
     latestByDate: {
       prefix: "Nyhedsbrev #",
       extension: ".docx",
-      destination: "Nyhedsbrev seneste.docx"
+      destination: "Nyhedsbrev.docx"
     }
   },
 
