@@ -3,7 +3,6 @@ name: Sync Excel from OneDrive
 
 on:
   workflow_dispatch:
-
   schedule:
     - cron: "0 */6 * * *"
 
@@ -38,17 +37,17 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Download Excel from OneDrive
+      - name: Download workbook from OneDrive
         run: node .github/scripts/sync-onedrive.mjs
         env:
           ONEDRIVE_AUTH_BASE64: ${{ secrets.ONEDRIVE_AUTH_BASE64 }}
 
-      - name: Commit updated workbook
+      - name: Commit workbook if changed
         run: |
           git add -- data/venteliste.xlsx
 
           if git diff --cached --quiet; then
-            echo "Workbook unchanged. No commit needed."
+            echo "Workbook unchanged."
             exit 0
           fi
 
