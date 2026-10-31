@@ -9,37 +9,73 @@ const SHARE_URL =
 
 const AUTH_FILE = "playwright/.auth/onedrive.json";
 
+async function ask(question) {
+  const terminal = createInterface({ input: stdin, output: stdout });
+  const answer = await terminal.question(question);
+  terminal.close();
+  return answer;
+}
+
 async function main() {
+  const email = process.env.ONEDRIVE_EMAIL;
+  const password = process.env.ONEDRIVE_PASSWORD;
+
+  if (!email || !password) {
+    throw new Error("Set ONEDRIVE_EMAIL and ONEDRIVE_PASSWORD first.");
+  }
+
   await mkdir("playwright/.auth", { recursive: true });
 
-  const browser = await chromium.launch({
-    headless: false
-  });
+  const browser = await chromium.launch({ headless: false });
 
   try {
     const context = await browser.newContext();
     const page = await context.newPage();
 
-    console.log("Opening your OneDrive workbook...");
-
+    console.log("Opening Microsoft sign-in...");
     await page.goto(SHARE_URL, {
       waitUntil: "domcontentloaded",
       timeout: 90000
     });
 
-    console.log("\nPlease complete the following:");
-    console.log("1. Sign in to your PERSONAL Microsoft account.");
-    console.log("2. Complete MFA or other verification if requested.");
-    console.log("3. Wait until the Excel workbook is visible.");
-    console.log("4. Return to this terminal and press ENTER.\n");
+    // Email step, if Microsoft presents it.
+    const emailField = page.locator(
+      'input[type="email"], input[name="loginfmt"]'
+    ).first();
 
-    const terminal = createInterface({ input: stdin, output: stdout });
+    if (await emailField.isVisible().catch(() => false)) {
+      await emailField.fill(email);
 
-    await terminal.question("Press ENTER when the workbook is open: ");
-    terminal.close();
+      const next = page.locator(
+        'input[type="submit"], button[type="submit"], #idSIButton9'
+      ).first();
+
+      await next.click();
+    }
+
+    // Password step, if Microsoft presents it.
+    const passwordField = page.locator(
+      'input[type="password"], input[name="passwd"]'
+    ).first();
+
+    if (await passwordField.waitFor({ state: "visible", timeout: 20000 }).then(() => true).catch(() => false)) {
+      await passwordField.fill(password);
+
+      const signIn = page.locator(
+        'input[type="submit"], button[type="submit"], #idSIButton9'
+      ).first();
+
+      await signIn.click();
+    }
+
+    console.log("\nComplete any Microsoft security checks now.");
+    console.log("Approve Authenticator, enter your code, or complete other MFA.");
+    console.log("Wait until your Excel workbook is visible.");
+
+    await ask("\nWhen the workbook is open, press ENTER here: ");
 
     if (/login\.live\.com|login\.microsoftonline\.com/i.test(page.url())) {
-      throw new Error("Microsoft login has not completed.");
+      throw new Error("You are still on a Microsoft sign-in page.");
     }
 
     await context.storageState({
@@ -47,9 +83,9 @@ async function main() {
       indexedDB: true
     });
 
-    console.log("\nAuthentication state saved:");
+    console.log("\nAuthentication session saved to:");
     console.log(AUTH_FILE);
-    console.log("\nDo not commit or share this file.");
+    console.log("Keep this file private.");
 
     await context.close();
   } finally {
@@ -58,6 +94,6 @@ async function main() {
 }
 
 main().catch(error => {
-  console.error("Authentication setup failed:", error);
+  console.error("Authentication setup failed:", error.message);
   process.exitCode = 1;
 });
