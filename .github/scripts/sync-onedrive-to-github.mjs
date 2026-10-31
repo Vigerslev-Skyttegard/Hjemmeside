@@ -25,12 +25,16 @@ const FILES = [
     destination: "Venteliste Parkering.xlsx"
   },
 
-  // FILE 2 - PLACEHOLDER
-  // {
-  //   folderUrl: "ONEDRIVE_FOLDER_URL",
-  //   fileName: "File2.xlsx",
-  //   destination: "File2.xlsx"
-  // },
+  // FILE 2 - LATEST NEWSLETTER
+  // Automatically download the newest dated newsletter from the Information folder.
+  {
+    folderUrl: "https://onedrive.live.com/my?id=%2Fpersonal%2F4560751afe576670%2FDocuments%2FDokumenter%2FInformation&viewid=92a05dab%2D4425%2D48df%2D9c92%2D07bfe5d43802",
+    latestByDate: {
+      prefix: "Nyhedsbrev #",
+      extension: ".docx",
+      destination: "Nyhedsbrev seneste.docx"
+    }
+  },
 
   // FILE 3 - PLACEHOLDER
   // {
@@ -64,10 +68,18 @@ if (!Array.isArray(FILES) || FILES.length === 0) {
 }
 
 for (const [index, file] of FILES.entries()) {
-  if (!file.folderUrl || !file.fileName || !file.destination) {
+  const hasFixedFile = Boolean(file.fileName && file.destination);
+  const hasLatestFile = Boolean(
+    file.latestByDate?.prefix &&
+    file.latestByDate?.extension &&
+    file.latestByDate?.destination
+  );
+
+  if (!file.folderUrl || (!hasFixedFile && !hasLatestFile)) {
     throw new Error(
       `Invalid FILES entry at position ${index + 1}. ` +
-      "Each entry requires folderUrl, fileName and destination."
+      "Each entry requires folderUrl and either fileName/destination " +
+      "or latestByDate prefix/extension/destination."
     );
   }
 }
@@ -358,14 +370,96 @@ async function loginToMicrosoft(page, client, firstUid) {
 }
 
 // ==================================================
-// FIND AND DOWNLOAD WORKBOOK FROM ONEDRIVE FOLDER
+// FIND FILES BY DANISH DATE IN THEIR FILENAMES
+// ==================================================
+
+const DANISH_MONTHS = {
+  januar: 0,
+  februar: 1,
+  marts: 2,
+  april: 3,
+  maj: 4,
+  juni: 5,
+  juli: 6,
+  august: 7,
+  september: 8,
+  oktober: 9,
+  november: 10,
+  december: 11
+};
+
+function parseDanishNewsletterDate(fileName) {
+  const match = fileName.match(
+    /^Nyhedsbrev\s*#\s*(\d+)\s+(januar|februar|marts|april|maj|juni|juli|august|september|oktober|november|december)\s+(\d{4})\.docx$/i
+  );
+
+  if (!match) return null;
+
+  const day = Number(match[1]);
+  const month = DANISH_MONTHS[match[2].toLowerCase()];
+  const year = Number(match[3]);
+  const date = new Date(Date.UTC(year, month, day));
+
+  // Reject impossible dates such as 32 juni 2026.
+  if (
+    date.getUTCFullYear() !== year ||
+    date.getUTCMonth() !== month ||
+    date.getUTCDate() !== day
+  ) {
+    return null;
+  }
+
+  return date;
+}
+
+async function findLatestDanishNewsletter(page, latestConfig) {
+  console.log("Searching the folder for dated newsletters...");
+
+  // OneDrive renders filenames as visible page text. Normalize whitespace
+  // before matching so layout line breaks do not affect filename detection.
+  const visibleText = (await page.locator("body").innerText())
+    .replace(/\s+/g, " ");
+
+  const escapedPrefix = latestConfig.prefix.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const escapedExtension = latestConfig.extension.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const candidatePattern = new RegExp(
+    `${escapedPrefix}\\s*(\\d+)\\s+(januar|februar|marts|april|maj|juni|juli|august|september|oktober|november|december)\\s+\\d{4}${escapedExtension}`,
+    "gi"
+  );
+
+  const candidates = [...new Set(visibleText.match(candidatePattern) || [])]
+    .map(fileName => ({
+      fileName,
+      date: parseDanishNewsletterDate(fileName)
+    }))
+    .filter(item => item.date)
+    .sort((a, b) => b.date - a.date);
+
+  if (candidates.length === 0) {
+    throw new Error(
+      `No newsletter matching "${latestConfig.prefix} [day] [Danish month] [year]${latestConfig.extension}" was found in the OneDrive folder.`
+    );
+  }
+
+  const latest = candidates[0];
+
+  console.log(`Found ${candidates.length} dated newsletter(s).`);
+  console.log(`Newest newsletter: ${latest.fileName}`);
+
+  return latest.fileName;
+}
+
+// ==================================================
+// FIND AND DOWNLOAD FILE FROM ONEDRIVE FOLDER
 // ==================================================
 
 async function downloadFile(page, fileConfig) {
-  const { folderUrl, fileName, destination } = fileConfig;
+  const { folderUrl } = fileConfig;
+  let fileName = fileConfig.fileName;
+  const destination = fileConfig.latestByDate?.destination || fileConfig.destination;
 
   console.log("------------------------------------------");
-  console.log(`Downloading: ${fileName}`);
+  console.log(`Downloading: ${fileName || "latest matching file"}`);
   console.log(`Destination: ${destination}`);
   console.log("------------------------------------------");
 
@@ -377,6 +471,10 @@ async function downloadFile(page, fileConfig) {
   });
 
   await page.waitForTimeout(8000);
+
+  if (fileConfig.latestByDate) {
+    fileName = await findLatestDanishNewsletter(page, fileConfig.latestByDate);
+  }
 
   console.log(`Looking for ${fileName}...`);
 
