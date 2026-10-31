@@ -1,0 +1,60 @@
+name: Sync OneDrive Files to GitHub
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: onedrive-file-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright and IMAP dependencies
+        run: |
+          npm init -y
+          npm pkg set type=module
+          npm install --no-save playwright imapflow mailparser
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Sign in and download files
+        run: node .github/scripts/sync-onedrive-to-github.mjs
+        env:
+          ONEDRIVE_EMAIL: ${{ secrets.ONEDRIVE_EMAIL }}
+          ONEDRIVE_PASSWORD: ${{ secrets.ONEDRIVE_PASSWORD }}
+
+      - name: Commit updated files
+        run: |
+          git add -A -- '*.xlsx' '*.docx' '*.doc' '*.pdf' '*.pptx'
+
+          if git diff --cached --quiet; then
+            echo "No file changes. No commit needed."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git commit -m "Sync files from OneDrive"
+          git push origin main
