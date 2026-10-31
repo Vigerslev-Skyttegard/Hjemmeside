@@ -1,1 +1,5 @@
 /artifacts/mockup-sandbox/
+node_modules/
+package.json
+package-lock.json
+playwright/.auth/
