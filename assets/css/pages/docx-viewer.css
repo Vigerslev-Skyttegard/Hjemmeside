@@ -1,0 +1,37 @@
+#docx-container {
+        width: 100%;
+        overflow-x: auto;
+        background: #f1f1f1;
+        padding: 20px 0;
+      }
+
+      #docx-container .docx-wrapper {
+        background: #f1f1f1;
+        padding: 20px;
+      }
+
+      #docx-container .docx {
+        margin: 0 auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      #docx-container .docx-wrapper > section {
+        margin-bottom: 20px;
+      }
+
+      @media screen and (max-width: 736px) {
+        #docx-container {
+          padding: 10px 0;
+        }
+
+        #docx-container .docx-wrapper {
+          padding: 5px;
+        }
+      }
+
+      .docx-error {
+        padding: 20px;
+        text-align: center;
+        background: #fff;
+        border-radius: 4px;
+      }

@@ -15,7 +15,11 @@
     document.body.appendChild(script);
   };
 
+<<<<<<< Updated upstream
   fetch(new URL("sidebar.html", document.baseURI))
+=======
+  fetch(new URL("/partials/sidebar.html", document.baseURI))
+>>>>>>> Stashed changes
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Læs ejerforeningens vedtægter og husorden."
+    />
+    <title>Husorden og vedtægter | Ejerforeningen Skyttegård/Vigerslev</title>
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+
+        <link rel="stylesheet" href="/assets/css/pages/pdf-viewer.css" />
+  
+  </head>
+
+  <body class="is-preload">
+    <div id="wrapper">
+      <main id="main">
+        <div class="inner">
+
+          <header id="header">
+            <a href="/" class="logo">
+              <strong>Skyttegård/Vigerslev</strong>
+            </a>
+          </header>
+
+          <section id="banner">
+            <div class="content">
+
+              <header>
+                <h1>Husorden og vedtægter</h1>
+                <p>Vigtige dokumenter for ejere og beboere.</p>
+              </header>
+
+              <!-- Husorden -->
+              <section>
+                <header class="pdf-heading">
+                  <h2>Husorden</h2>
+                  <p>Ejerforeningens gældende husorden.</p>
+                </header>
+
+                <div
+                  id="husorden-pdf"
+                  class="pdf-container"
+                  aria-live="polite"
+                >
+                  <p class="pdf-loading">Indlæser husorden...</p>
+                </div>
+              </section>
+
+              <hr />
+
+              <!-- Vedtægter -->
+              <section>
+                <header class="pdf-heading">
+                  <h2>Vedtægter</h2>
+                  <p>Ejerforeningens gældende vedtægter.</p>
+                </header>
+
+                <div
+                  id="vedtaegter-pdf"
+                  class="pdf-container"
+                  aria-live="polite"
+                >
+                  <p class="pdf-loading">Indlæser vedtægter...</p>
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <aside id="sidebar" aria-label="Navigation og kontakt"></aside>
+    </div>
+
+    <!-- Existing website scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/load-sidebar.js"></script>
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script src="/assets/js/pages/pdf-viewer.js"></script>
+
+  </body>
+</html>

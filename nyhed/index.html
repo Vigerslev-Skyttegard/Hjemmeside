@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Nyheder, nyhedsbreve og referater fra bestyrelsen i Ejerforeningen Skyttegård/Vigerslev."
+    />
+    <title>Nyheder | Ejerforeningen Skyttegård/Vigerslev</title>
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+
+    <!-- DOCX styling -->
+        <link rel="stylesheet" href="/assets/css/pages/docx-viewer.css" />
+  
+  </head>
+
+  <body class="is-preload">
+    <div id="wrapper">
+      <main id="main">
+        <div class="inner">
+
+          <header id="header">
+            <a href="/" class="logo">
+              <strong>Skyttegård/Vigerslev</strong>
+            </a>
+          </header>
+
+          <section id="banner">
+            <div class="content">
+
+              <header>
+                <h1>Nyheder</h1>
+                <p>Velkommen til Skyttegård/Vigerslevs hjemmeside.</p>
+              </header>
+
+              <p>Her finder du nyhedsbreve fra bestyrelsen.</p>
+
+              <!-- DOCX document viewer -->
+              <div id="docx-container" aria-live="polite">
+                <p>Indlæser nyhedsbrev...</p>
+              </div>
+
+              <noscript>
+                <p>
+                  JavaScript skal være aktiveret for at vise nyhedsbrevet.
+                </p>
+              </noscript>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <aside id="sidebar" aria-label="Navigation og kontakt"></aside>
+    </div>
+
+    <!-- Existing website scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/load-sidebar.js"></script>
+
+    <!-- DOCX dependencies: JSZip must load first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://unpkg.com/docx-preview@0.3.6/dist/docx-preview.js"></script>
+
+    <!-- DOCX renderer -->
+    <script src="/assets/js/pages/docx-viewer.js"></script>
+
+  </body>
+</html>

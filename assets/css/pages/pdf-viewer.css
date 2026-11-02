@@ -1,0 +1,44 @@
+/* PDF viewer */
+
+      .pdf-container {
+        width: 100%;
+        margin-bottom: 40px;
+        padding: 15px;
+        background: #f1f1f1;
+        overflow: hidden;
+        border-radius: 4px;
+      }
+
+      .pdf-page {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0 auto 20px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .pdf-loading {
+        text-align: center;
+        padding: 30px;
+      }
+
+      .pdf-error {
+        padding: 20px;
+        text-align: center;
+        background: #fff;
+      }
+
+      .pdf-heading {
+        margin-bottom: 15px;
+      }
+
+      @media screen and (max-width: 736px) {
+        .pdf-container {
+          padding: 5px;
+        }
+
+        .pdf-page {
+          margin-bottom: 10px;
+        }
+      }

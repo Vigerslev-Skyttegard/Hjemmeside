@@ -1,0 +1,49 @@
+#excel-viewer {
+        width: 100%;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+      }
+
+      #excel-viewer table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+
+      #excel-viewer td,
+      #excel-viewer th {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(160, 160, 160, 0.3);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      #excel-viewer tr:first-child td,
+      #excel-viewer tr:first-child th {
+        font-weight: 600;
+        background: rgba(160, 160, 160, 0.1);
+      }
+
+      #excel-viewer tr:nth-child(even) {
+        background: rgba(160, 160, 160, 0.04);
+      }
+
+      #excel-viewer tr:hover {
+        background: rgba(160, 160, 160, 0.12);
+      }
+
+      @media (max-width: 600px) {
+        #excel-viewer table {
+          font-size: 0.8rem;
+        }
+
+        #excel-viewer td,
+        #excel-viewer th {
+          padding: 0.6rem;
+        }
+      }
+
+.onedrive-container--parking {
+  height: 1010px;
+  overflow: hidden;
+}
