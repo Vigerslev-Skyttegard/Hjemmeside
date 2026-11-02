@@ -1,4 +1,4 @@
-# Hjemmeside – Ejerforeningen Skyttegård/Vigerslev
+# Hjemmeside – Ejerforeningen Skyttegård/Vigerslev.
 
 Dette repository indeholder den offentlige hjemmeside for ejerforeningen i
 Valby. Siden er bygget som statisk HTML, CSS og JavaScript uden framework,
