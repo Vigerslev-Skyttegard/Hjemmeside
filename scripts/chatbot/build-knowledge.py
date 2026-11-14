@@ -214,8 +214,18 @@ def url_for(rel):
 
 def category_for(rel):
     low = rel.lower()
-    for key, category in [("parkering", "parkering"), ("husorden", "husorden"), ("vedtaegter", "vedtaegter"), ("kaelderrum", "kaelderrum"), ("noeglebrikker", "noeglebrikker"), ("kontakt", "kontakt"), ("velkomstbrev", "velkomst"), ("nyhed", "nyheder")]:
-        if key in low: return category
+    # Filnavnet bruger æ, mens interne kategorinøgler bruger ASCII. Begge former genkendes.
+    for keys, category in [
+        (("parkering",), "parkering"),
+        (("husorden",), "husorden"),
+        (("vedtaegter", "vedtægter"), "vedtaegter"),
+        (("kaelderrum", "kælderrum"), "kaelderrum"),
+        (("noeglebrikker", "nøglebrikker"), "noeglebrikker"),
+        (("kontakt",), "kontakt"),
+        (("velkomstbrev",), "velkomst"),
+        (("nyhed",), "nyheder")
+    ]:
+        if any(key in low for key in keys): return category
     return "generelt"
 def keywords_for(rel, chunk):
     words = re.findall(r"[a-zæøå0-9]{3,}", (rel + " " + chunk).lower())

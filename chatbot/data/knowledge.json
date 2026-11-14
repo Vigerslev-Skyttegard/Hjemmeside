@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-14T21:03:54.429127+00:00",
+  "generated_at": "2026-11-14T21:14:24.388035+00:00",
   "source_count": 12,
   "chunk_count": 43,
   "documents": [
@@ -792,7 +792,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "144",
         "148",
@@ -823,7 +823,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "administration",
         "aktiviteter",
@@ -854,7 +854,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "foreningen",
         "hæfter",
@@ -885,7 +885,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "berettiget",
         "bestyrelsen",
@@ -916,7 +916,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "forhøjet",
         "forpligtelser",
@@ -947,7 +947,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "alle",
         "alt",
@@ -978,7 +978,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "dette",
         "dvendig",
@@ -1009,7 +1009,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "anvisningerne",
         "bestyrelsens",
@@ -1040,7 +1040,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "bestyrelsen",
         "efterkomme",
@@ -1071,7 +1071,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "anlægges",
         "beliggende",
@@ -1102,7 +1102,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "afholdelse",
         "dage",
@@ -1133,7 +1133,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "bestyrelsen",
         "dage",
@@ -1164,7 +1164,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "beslutninger",
         "bestanddele",
@@ -1195,7 +1195,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "afde",
         "denne",
@@ -1226,7 +1226,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "antal",
         "automatisk",
@@ -1257,7 +1257,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "arv",
         "ejerlejlighed",
@@ -1288,7 +1288,7 @@
         "url": "/Vedtægter.pdf"
       },
       "language": "da",
-      "category": "generelt",
+      "category": "vedtaegter",
       "keywords": [
         "2010",
         "2677",

@@ -7,7 +7,8 @@
   const TEXT = {
     da: {
       title: "Spørg ejerforeningen", subtitle: "Dansk / English",
-      intro: "Hej! Jeg kan hjælpe med at finde information på ejerforeningens hjemmeside. Hvad vil du gerne vide?",
+      intro: "Hej! Jeg kan hjælpe med at finde information på ejerforeningens hjemmeside. Vælg et emne herunder, eller skriv dit spørgsmål direkte – du kan altid spørge på tværs af emnerne.",
+      topicsHeading: "Hvad drejer dit spørgsmål sig om?", topicPrompt: "Typiske spørgsmål om", backTopics: "Vis alle emner",
       placeholder: "Skriv dit spørgsmål…", send: "Send", open: "Åbn chat med ejerforeningen",
       noMatch: "Jeg kunne ikke finde et sikkert svar i hjemmesidens nuværende information. Prøv at omformulere spørgsmålet, eller kontakt bestyrelsen.",
       sources: "Kilder", loading: "Indlæser foreningens viden…", error: "Vidensdatabasen kunne ikke indlæses lige nu.",
@@ -15,7 +16,8 @@
     },
     en: {
       title: "Ask the association", subtitle: "Danish / English",
-      intro: "Hello! I can help you find information on the association website. What would you like to know?",
+      intro: "Hello! I can help you find information on the association website. Choose a topic below or type your question. You can always ask about something outside the selected topic.",
+      topicsHeading: "What is your question about?", topicPrompt: "Common questions about", backTopics: "Show all topics",
       placeholder: "Type your question…", send: "Send", open: "Open association chat",
       noMatch: "I could not find a reliable answer in the website's current information. Try rephrasing your question or contact the board.",
       sources: "Sources", loading: "Loading the association's information…", error: "The knowledge file could not be loaded right now.",
@@ -23,14 +25,108 @@
     }
   };
 
+  // Emnevalg er kun genveje til forslag. De begrænser aldrig den almindelige søgning.
+  const TOPICS = [
+    {
+      id: "parkering",
+      label: { da: "Parkering", en: "Parking" },
+      questions: [
+        { da: "Hvordan kommer jeg på ventelisten?", en: "How do I join the waiting list?" },
+        { da: "Nogen holder på min parkeringsplads", en: "Someone is parked in my space" },
+        { da: "Hvem administrerer parkeringspladserne?", en: "Who manages the parking spaces?" }
+      ]
+    },
+    {
+      id: "vedtaegter",
+      label: { da: "Vedtægter", en: "Bylaws" },
+      questions: [
+        { da: "Hvad siger vedtægterne om generalforsamlingen?", en: "What do the bylaws say about the general meeting?" },
+        { da: "Hvad siger vedtægterne om udlejning?", en: "What do the bylaws say about renting out an apartment?" },
+        { da: "Hvor finder jeg vedtægterne?", en: "Where can I find the bylaws?" }
+      ]
+    },
+    {
+      id: "husorden",
+      label: { da: "Husorden", en: "House rules" },
+      questions: [
+        { da: "Må vi holde hund?", en: "Are dogs allowed?" },
+        { da: "Hvad gælder om nattero?", en: "What are the quiet-hour rules?" },
+        { da: "Må man ryge i opgangen?", en: "Is smoking allowed in the stairwell?" }
+      ]
+    },
+    {
+      id: "kontakt",
+      label: { da: "Kontakt", en: "Contact" },
+      questions: [
+        { da: "Hvordan kontakter jeg bestyrelsen?", en: "How do I contact the board?" },
+        { da: "Hvem kontakter jeg ved problemer med ejendommen?", en: "Who should I contact about a property issue?" }
+      ]
+    },
+    {
+      id: "kaelderrum",
+      label: { da: "Kælderrum", en: "Basement storage" },
+      questions: [
+        { da: "Hvordan lejer jeg et kælderrum?", en: "How do I rent a basement storage room?" }
+      ]
+    },
+    {
+      id: "noeglebrikker",
+      label: { da: "Nøglebrikker", en: "Key fobs" },
+      questions: [
+        { da: "Hvordan bestiller jeg en nøglebrik?", en: "How do I order a key fob?" },
+        { da: "Hvad gør jeg, hvis jeg har mistet min nøglebrik?", en: "What should I do if I have lost my key fob?" }
+      ]
+    },
+    {
+      id: "nyheder",
+      label: { da: "Nyheder", en: "News" },
+      questions: [
+        { da: "Hvor finder jeg nyhedsbreve fra bestyrelsen?", en: "Where can I find board newsletters?" }
+      ]
+    },
+    {
+      id: "generelt",
+      label: { da: "Generelle spørgsmål", en: "General questions" },
+      questions: [
+        { da: "Hvad kan jeg spørge om?", en: "What can I ask about?" },
+        { da: "Hvordan bruger jeg chatbotten?", en: "How do I use the chatbot?" },
+        { da: "Er dine svar officielle?", en: "Are your answers official?" }
+      ]
+    }
+  ];
+
+  const PREDEFINED_ANSWERS = [
+    {
+      match: /^(hvad kan jeg sporge om|hvad kan du hjaelpe med|what can i ask about|what can you help me with)\??$/,
+      answer: {
+        da: "Jeg kan hjælpe med oplysninger om parkering, vedtægter, husorden, kontakt, kælderrum, nøglebrikker og nyheder. Vælg et emne eller skriv et frit spørgsmål.",
+        en: "I can help with information about parking, bylaws, house rules, contact details, basement storage, key fobs and news. Choose a topic or type your own question."
+      }
+    },
+    {
+      match: /^(hvordan bruger jeg chatbotten|how do i use the chatbot)\??$/,
+      answer: {
+        da: "Vælg et emne for at se forslag til typiske spørgsmål, eller skriv dit spørgsmål i feltet. Emnevalget er kun en genvej – jeg søger stadig i hele hjemmesidens vidensdatabase, så du kan også spørge om noget helt andet.",
+        en: "Choose a topic to see suggested questions, or type your question. The topic selection is only a shortcut – I still search the entire website knowledge base, so you can ask about something completely different."
+      }
+    },
+    {
+      match: /^(er dine svar officielle|er dine svar bindende|are your answers official|are your answers binding)\??$/,
+      answer: {
+        da: "Nej. Jeg er en automatisk informationsassistent og kan ikke træffe beslutninger på bestyrelsens vegne. Brug kildelinkene, og kontakt bestyrelsen, hvis du er i tvivl.",
+        en: "No. I am an automated information assistant and cannot make decisions on behalf of the board. Check the source links and contact the board if you are unsure."
+      }
+    }
+  ];
+
   // Synonymer hjælper med almindelige formuleringer – de ændrer aldrig kildens regler.
   const synonyms = {
     parkering: ["parking", "parkeringsplads", "venteliste", "bil", "p-plads", "parkeringskort"],
     husdyr: ["dyr", "hund", "hunde", "kat", "katte", "kæledyr", "kæledyr", "pets", "pet", "dog", "dogs", "cat", "cats"],
     husorden: ["regler", "støj", "affald", "cykler", "rygning", "trappe"],
     vedtaegter: ["vedtægter", "regler", "bestyrelse", "generalforsamling"],
-    noeglebrik: ["noeglebrik", "adgang", "nøglekort", "key fob", "keycard"],
-    kælderrum: ["kaelderrum", "leje", "opbevaring", "basement storage"],
+    noeglebrik: ["noeglebrik", "noeglebrikker", "adgang", "adgangsbrik", "nøglekort", "key fob", "keycard"],
+    kaelderrum: ["kaelderrum", "kaelder", "leje", "opbevaring", "basement storage"],
     kontakt: ["bestyrelse", "email", "telefon", "deas", "contact"],
     airbnb: ["udlejning", "korttidsudlejning", "fremleje"]
   };
@@ -40,7 +136,12 @@
     { id: "husdyr", terms: ["husdyr", "dyr", "hund", "hunde", "kat", "katte", "kæledyr", "pet", "pets", "dog", "cat"], category: "husorden", section: 6 },
     { id: "fodring", terms: ["fodre", "fodring", "fugle", "katte", "fodres"], category: "husorden", section: 9 },
     { id: "stoej", terms: ["støj", "larm", "musik", "radio", "fjernsyn", "nattero", "højlydt"], category: "husorden", section: 7 },
-    { id: "parkering", terms: ["parkering", "parkeringsplads", "parkeringspladser", "p-plads", "venteliste", "dinparkering", "parkeringskontrol", "pladsnummer", "uvedkommende", "holder på min plads", "forkert parkeret", "parking", "parking space"], category: "parkering" }
+    { id: "parkering", terms: ["parkering", "parkeringsplads", "parkeringspladser", "p-plads", "venteliste", "dinparkering", "parkeringskontrol", "pladsnummer", "uvedkommende", "holder på min plads", "forkert parkeret", "parking", "parking space"], category: "parkering" },
+    { id: "vedtaegter", terms: ["vedtægter", "vedtægt", "generalforsamling", "udlejning", "fremleje", "bylaws"], category: "vedtaegter" },
+    { id: "kontakt", terms: ["kontakt", "bestyrelse", "bestyrelsen", "administrator", "email", "e-mail", "telefon", "deas"], category: "kontakt" },
+    { id: "kaelderrum", terms: ["kælderrum", "kælder", "opbevaring", "basement storage"], category: "kaelderrum" },
+    { id: "noeglebrikker", terms: ["nøglebrik", "nøglebrikker", "nøglekort", "adgangsbrik", "key fob", "keycard"], category: "noeglebrikker" },
+    { id: "nyheder", terms: ["nyhed", "nyheder", "nyhedsbrev", "nyhedsbreve", "newsletter"], category: "nyheder" }
   ];
 
   let language = detectLanguage(navigator.language || "da");
@@ -86,7 +187,7 @@
       const occurrences = content.filter(word => word === term).length;
       score += Math.min(occurrences, 4) * 1.2;
     }
-    if (intent && doc.category === intent.category) score += 5;
+    if (intent && doc.category === intent.category) score += 8;
     if (intent && intent.section !== undefined && Number(doc.section) === intent.section) score += 24;
     if (intent?.id === "parkering") {
       const q = normalize(query);
@@ -113,6 +214,12 @@
     }
     return ranked.slice(0, 1);
   }
+  function predefinedAnswer(question) {
+    const normalized = normalize(question).trim().replace(/[.!?]+$/g, "");
+    const found = PREDEFINED_ANSWERS.find(item => item.match.test(normalized));
+    return found ? found.answer[language] : null;
+  }
+
   function formatAnswer(matches, question) {
     const primary = matches[0].doc;
     const intent = detectIntent(question);
@@ -211,6 +318,81 @@
     }
     messages.appendChild(item); messages.scrollTop = messages.scrollHeight;
   }
+  function addTopicMenu() {
+    const item = document.createElement("div");
+    item.className = "acb-message acb-bot acb-topic-message";
+    const heading = document.createElement("strong");
+    heading.className = "acb-topic-heading";
+    heading.textContent = TEXT[language].topicsHeading;
+    item.appendChild(heading);
+    const grid = document.createElement("div");
+    grid.className = "acb-topic-grid";
+    TOPICS.forEach(topic => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "acb-topic-button";
+      button.textContent = topic.label[language];
+      button.addEventListener("click", () => showTopicQuestions(topic.id));
+      grid.appendChild(button);
+    });
+    item.appendChild(grid);
+    messages.appendChild(item);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showTopicQuestions(topicId) {
+    const topic = TOPICS.find(item => item.id === topicId);
+    if (!topic) return;
+    const item = document.createElement("div");
+    item.className = "acb-message acb-bot acb-topic-message";
+    const heading = document.createElement("strong");
+    heading.className = "acb-topic-heading";
+    heading.textContent = `${TEXT[language].topicPrompt} ${topic.label[language].toLocaleLowerCase(language === "da" ? "da" : "en")}:`;
+    item.appendChild(heading);
+    const grid = document.createElement("div");
+    grid.className = "acb-question-grid";
+    topic.questions.forEach(question => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "acb-question-button";
+      button.textContent = question[language];
+      button.addEventListener("click", () => submitQuestion(question[language]));
+      grid.appendChild(button);
+    });
+    item.appendChild(grid);
+    const back = document.createElement("button");
+    back.type = "button";
+    back.className = "acb-topic-back";
+    back.textContent = TEXT[language].backTopics;
+    back.addEventListener("click", addTopicMenu);
+    item.appendChild(back);
+    messages.appendChild(item);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function submitQuestion(question) {
+    const cleanQuestion = String(question || "").trim();
+    if (!cleanQuestion) return;
+    addMessage("user", cleanQuestion);
+    input.value = "";
+
+    // Generelle spørgsmål om selve chatbotten får korte, faste svar.
+    const fixedAnswer = predefinedAnswer(cleanQuestion);
+    if (fixedAnswer) {
+      addMessage("bot", fixedAnswer);
+      return;
+    }
+
+    await loadKnowledge();
+    // Søgningen er bevidst global: valget af emne må aldrig blokere spørgsmål om andre emner.
+    const matches = search(cleanQuestion);
+    if (!matches.length) {
+      addMessage("bot", TEXT[language].noMatch);
+      return;
+    }
+    addMessage("bot", formatAnswer(matches, cleanQuestion), matches.slice(0, 1));
+  }
+
   async function loadKnowledge() {
     if (knowledge || loading) return;
     loading = true;
@@ -229,7 +411,10 @@
     launcher.setAttribute("aria-expanded", String(!panel.hidden));
     if (!panel.hidden) {
       updateLanguage(); await loadKnowledge();
-      if (!messages.children.length) addMessage("bot", TEXT[language].intro);
+      if (!messages.children.length) {
+        addMessage("bot", TEXT[language].intro);
+        addTopicMenu();
+      }
       input.focus();
     }
   });
@@ -241,16 +426,7 @@
   });
   form.addEventListener("submit", async event => {
     event.preventDefault();
-    const question = input.value.trim(); if (!question) return;
-    addMessage("user", question); input.value = "";
-    await loadKnowledge();
-    const matches = search(question);
-    if (!matches.length) {
-      addMessage("bot", TEXT[language].noMatch);
-      return;
-    }
-    // Svarene bygges kun af fundne kilder. Ingen ekstern AI og ingen regel-fortolkning.
-    addMessage("bot", formatAnswer(matches, question), matches.slice(0, 1));
+    await submitQuestion(input.value);
   });
 
   updateLanguage();

@@ -72,3 +72,74 @@
   #association-chatbot .acb-launcher { right: 14px; bottom: 14px; }
   #association-chatbot .acb-panel { right: 10px; bottom: 75px; width: calc(100vw - 20px); height: min(620px, calc(100vh - 100px)); }
 }
+
+/* Tydelig knaptekst: sort tekst på alle knapper, også de røde primærknapper. */
+#association-chatbot .acb-launcher,
+#association-chatbot .acb-header button,
+#association-chatbot .acb-send,
+#association-chatbot .acb-topic-button,
+#association-chatbot .acb-question-button,
+#association-chatbot .acb-topic-back {
+  color: #000 !important;
+}
+#association-chatbot .acb-header button {
+  background: #fff;
+  border-color: #fff;
+  font-weight: 700;
+}
+#association-chatbot .acb-header button:hover { background: #f4f4f4; }
+#association-chatbot .acb-topic-message { max-width: 100%; }
+#association-chatbot .acb-topic-heading {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 12px;
+  color: var(--acb-text);
+}
+#association-chatbot .acb-topic-grid,
+#association-chatbot .acb-question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+#association-chatbot .acb-topic-button,
+#association-chatbot .acb-question-button {
+  min-width: 0;
+  border: 1px solid #e7b2b2;
+  border-radius: 8px;
+  padding: 9px 8px;
+  background: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+#association-chatbot .acb-topic-button:hover,
+#association-chatbot .acb-question-button:hover {
+  background: var(--acb-soft);
+  border-color: var(--acb-accent);
+}
+#association-chatbot .acb-topic-button:focus-visible,
+#association-chatbot .acb-question-button:focus-visible,
+#association-chatbot .acb-topic-back:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+#association-chatbot .acb-topic-back {
+  margin-top: 9px;
+  border: 0;
+  padding: 5px 0 0;
+  background: transparent;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+@media (max-width: 360px) {
+  #association-chatbot .acb-topic-grid,
+  #association-chatbot .acb-question-grid { grid-template-columns: 1fr; }
+}

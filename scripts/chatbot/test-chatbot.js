@@ -11,7 +11,7 @@ let source = fs.readFileSync(jsPath, "utf8");
 const insertionPoint = '  const style = document.createElement("link");';
 if (!source.includes(insertionPoint)) throw new Error("Could not locate chatbot test hook");
 source = source.replace(insertionPoint,
-  '  globalThis.__chatbotTest = { setKnowledge(v) { knowledge = v; }, search, formatAnswer }; return;\n' + insertionPoint);
+  '  globalThis.__chatbotTest = { setKnowledge(v) { knowledge = v; }, search, formatAnswer, predefinedAnswer, topics: TOPICS }; return;\n' + insertionPoint);
 
 const context = {
   navigator: { language: "da" },
@@ -40,3 +40,33 @@ for (const [question, expectedDocument, expectedAnswer] of tests) {
   if (!answer.includes(expectedAnswer)) throw new Error(`Forkert svar for '${question}': ${answer}`);
   console.log(`OK: ${question} → ${results[0].doc.title}`);
 }
+
+const expectedTopics = ["parkering", "vedtaegter", "husorden", "kontakt", "kaelderrum", "noeglebrikker", "nyheder", "generelt"];
+for (const topic of expectedTopics) {
+  if (!api.topics.some(item => item.id === topic)) throw new Error(`Mangler chatbot-emnet: ${topic}`);
+}
+console.log("OK: Alle otte emner er tilgængelige");
+
+const generalAnswer = api.predefinedAnswer("Hvad kan jeg spørge om?");
+if (!generalAnswer || !generalAnswer.includes("parkering") || !generalAnswer.includes("vedtægter")) {
+  throw new Error("Det generelle FAQ-svar mangler relevante emner");
+}
+const usageAnswer = api.predefinedAnswer("Hvordan bruger jeg chatbotten?");
+if (!usageAnswer || !usageAnswer.includes("hele hjemmesidens vidensdatabase")) {
+  throw new Error("FAQ-svaret forklarer ikke, at søgningen er global");
+}
+console.log("OK: Generelle spørgsmål får prædefinerede svar");
+
+const bylawResults = api.search("Hvad siger vedtægterne om udlejning?");
+if (!bylawResults.length || bylawResults[0].doc.category !== "vedtaegter") {
+  throw new Error("Vedtægtsspørgsmålet fandt ikke vedtægtskilden");
+}
+const keyResults = api.search("Hvordan bestiller jeg en nøglebrik?");
+if (!keyResults.length || keyResults[0].doc.category !== "noeglebrikker") {
+  throw new Error("Nøglebrikspørgsmålet fandt ikke nøglebrikskilden");
+}
+const newsResults = api.search("Hvor finder jeg nyhedsbreve fra bestyrelsen?");
+if (!newsResults.length || newsResults[0].doc.category !== "nyheder") {
+  throw new Error("Nyhedsspørgsmålet fandt ikke nyhedskilden");
+}
+console.log("OK: Vedtægter, nøglebrikker og nyheder finder den rigtige kategori");
