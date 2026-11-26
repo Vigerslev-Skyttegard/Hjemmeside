@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "tested_at": "2026-11-25T07:03:07.744Z",
-  "generated": 15,
-  "approved": 1,
-  "rejected": 14,
-  "total_unique_attempted": 385,
+  "tested_at": "2026-11-26T16:49:34.896Z",
+  "generated": 17,
+  "approved": 10,
+  "rejected": 7,
+  "total_unique_attempted": 402,
   "attempted_questions": [
     "Hvad gælder om Forside | E/F Skyttegårdvej/Vigerslevvej?",
     "Hvor kan jeg læse om Forside | E/F Skyttegårdvej/Vigerslevvej?",
@@ -390,73 +390,77 @@
     "Hvordan skal jeg lufte ud for at undgå skimmelsvamp?",
     "Hvor skal jeg stille mit storskrald?",
     "Hvad gør jeg, hvis jeg har mistet min nøglebrik?",
-    "Er det tilladt at ryge på de indendørs fællesarealer?"
+    "Er det tilladt at ryge på de indendørs fællesarealer?",
+    "Hvem kan jeg kontakte, hvis der er en uvedkommende bil, der holder på min faste parkeringsplads?",
+    "Hvordan får jeg fat i en ekstra nøglebrik, og hvad koster det?",
+    "Jeg har opdaget en vandskade på badeværelset – hvad gør jeg?",
+    "Hvordan fungerer reglerne for Airbnb og korttidsudlejning?",
+    "Er det tilladt at opbevare min cykel i trappeopgangen?",
+    "Hvor ofte skal jeg lufte ud for at undgå fugtskader i min lejlighed?",
+    "Hvor skal jeg stille mit storskrald, som f.eks. gamle møbler?",
+    "Hvem har ansvaret for vedligeholdelse af de vandrette rørforgreninger inde i min lejlighed?",
+    "Hvordan sikrer jeg mig, at min dør til kælderen altid er låst?",
+    "Hvor lang tid skal jeg holde min nøglebrik mod tastaturet for at åbne døren?",
+    "Skal jeg varsle naboerne, hvis jeg får lavet VVS-arbejde, der kræver lukning af vandet?",
+    "Hvor finder jeg information om kommende generalforsamlinger?",
+    "Må jeg opsætte en parabol eller antenne på min altan?",
+    "Hvordan tilmelder jeg mig ventelisten til et ekstra kælderrum?",
+    "Er det tilladt at drive erhverv fra min lejlighed eller mit kælderrum?",
+    "Hvordan fungerer affaldssortering, og hvor finder jeg miljøskabet?",
+    "Hvem skal jeg kontakte, hvis jeg oplever støj fra mine naboer?"
   ],
   "approved_questions": [
-    "Må jeg opbevare min cykel i trappeopgangen?"
+    "Hvem kan jeg kontakte, hvis der er en uvedkommende bil, der holder på min faste parkeringsplads?",
+    "Jeg har opdaget en vandskade på badeværelset – hvad gør jeg?",
+    "Hvordan fungerer reglerne for Airbnb og korttidsudlejning?",
+    "Er det tilladt at opbevare min cykel i trappeopgangen?",
+    "Hvem har ansvaret for vedligeholdelse af de vandrette rørforgreninger inde i min lejlighed?",
+    "Skal jeg varsle naboerne, hvis jeg får lavet VVS-arbejde, der kræver lukning af vandet?",
+    "Hvor finder jeg information om kommende generalforsamlinger?",
+    "Hvordan tilmelder jeg mig ventelisten til et ekstra kælderrum?",
+    "Hvordan fungerer affaldssortering, og hvor finder jeg miljøskabet?",
+    "Hvem skal jeg kontakte, hvis jeg oplever støj fra mine naboer?"
   ],
   "rejected_questions": [
     {
-      "question": "Hvem skal jeg kontakte, hvis en fremmed bil holder på min parkeringsplads?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Jeg har fået en vandskade i badeværelset, hvad gør jeg?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Er det tilladt at leje min lejlighed ud via Airbnb?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Hvor lang tid skal jeg holde min nøglebrik hen til tastaturet for at låse op?",
+      "question": "Hvordan får jeg fat i en ekstra nøglebrik, og hvad koster det?",
       "reason": "wrong_or_missing_source",
       "expected": "Nyhedsbrev nr.8",
       "actual": "Nøglekort & nøglebrikker - bestilling, priser og sikkerhed"
     },
     {
-      "question": "Hvad gør jeg, hvis mit kælderrum ikke er låst?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Hvornår skal forslag til den ordinære generalforsamling senest være indsendt?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Skal jeg selv male mine vinduer indvendigt, når foreningen maler dem udvendigt?",
+      "question": "Hvor ofte skal jeg lufte ud for at undgå fugtskader i min lejlighed?",
       "reason": "wrong_or_missing_source",
-      "expected": "Vedtægter - § 27. Ejernes vedligeholdelsespligt",
-      "actual": "Vedligeholdelse - indvendig vedligeholdelse (ejers ansvar)"
+      "expected": "Husorden - punkt 8",
+      "actual": "Vedligeholdelse - forsikring og anmeldelse af skader"
     },
     {
-      "question": "Hvor meget koster en ekstra nøglebrik?",
+      "question": "Hvor skal jeg stille mit storskrald, som f.eks. gamle møbler?",
+      "reason": "low_question_quality"
+    },
+    {
+      "question": "Hvordan sikrer jeg mig, at min dør til kælderen altid er låst?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Husorden - punkt 3",
+      "actual": "Kælderrum - leje af ekstra kælderrum, venteliste og vilkår"
+    },
+    {
+      "question": "Hvor lang tid skal jeg holde min nøglebrik mod tastaturet for at åbne døren?",
       "reason": "wrong_or_missing_source",
       "expected": "Nyhedsbrev nr.8",
       "actual": "Nøglekort & nøglebrikker - bestilling, priser og sikkerhed"
     },
     {
-      "question": "Er det tilladt at holde hund eller kat i lejligheden?",
-      "reason": "duplicate_or_empty"
+      "question": "Må jeg opsætte en parabol eller antenne på min altan?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Husorden - punkt 2",
+      "actual": null
     },
     {
-      "question": "Hvem har ansvaret for vedligeholdelse af faldstammerne i bygningen?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Hvordan skal jeg lufte ud for at undgå skimmelsvamp?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Hvor skal jeg stille mit storskrald?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Hvad gør jeg, hvis jeg har mistet min nøglebrik?",
-      "reason": "duplicate_or_empty"
-    },
-    {
-      "question": "Er det tilladt at ryge på de indendørs fællesarealer?",
-      "reason": "duplicate_or_empty"
+      "question": "Er det tilladt at drive erhverv fra min lejlighed eller mit kælderrum?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Vedtægter - § 33. Anvendelse og salg",
+      "actual": "Kælderrum - leje af ekstra kælderrum, venteliste og vilkår"
     }
   ]
 }

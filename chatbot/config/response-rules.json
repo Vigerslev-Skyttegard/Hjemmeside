@@ -352,6 +352,96 @@
       "answer_word_count": 46,
       "approved_by": "automated-source-and-answer-test",
       "approved_at": "2026-11-25T07:03:07.744Z"
+    },
+    {
+      "question": "Hvem kan jeg kontakte, hvis der er en uvedkommende bil, der holder på min faste parkeringsplads?",
+      "document_id": "37045bd9fac779f9",
+      "source_file": "parkering/index.html",
+      "source_url": "/parkering/",
+      "answer_word_count": 20,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Jeg har opdaget en vandskade på badeværelset – hvad gør jeg?",
+      "document_id": "97716fde28e88baa",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 77,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Hvordan fungerer reglerne for Airbnb og korttidsudlejning?",
+      "document_id": "766b8c07b4dcf66e",
+      "source_file": "udlejning/index.html",
+      "source_url": "/udlejning/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Er det tilladt at opbevare min cykel i trappeopgangen?",
+      "document_id": "692314bd890445e2",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 46,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Hvem har ansvaret for vedligeholdelse af de vandrette rørforgreninger inde i min lejlighed?",
+      "document_id": "465ffeea80f6d77b",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 41,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Skal jeg varsle naboerne, hvis jeg får lavet VVS-arbejde, der kræver lukning af vandet?",
+      "document_id": "9703ea0c9cec90a6",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 50,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Hvor finder jeg information om kommende generalforsamlinger?",
+      "document_id": "c8d4296f8fc49b52",
+      "source_file": "generalforsamling/index.html",
+      "source_url": "/generalforsamling/",
+      "answer_word_count": 27,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Hvordan tilmelder jeg mig ventelisten til et ekstra kælderrum?",
+      "document_id": "bb7952d2e44d9499",
+      "source_file": "kaelderrum/index.html",
+      "source_url": "/kaelderrum/",
+      "answer_word_count": 49,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Hvordan fungerer affaldssortering, og hvor finder jeg miljøskabet?",
+      "document_id": "f8073092ba984c45",
+      "source_file": "affald-storskrald/index.html",
+      "source_url": "/affald-storskrald/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Hvem skal jeg kontakte, hvis jeg oplever støj fra mine naboer?",
+      "document_id": "f857c24a7e2fd061",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 36,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-26T16:49:34.896Z"
     }
   ]
 }
