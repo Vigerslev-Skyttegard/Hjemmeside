@@ -442,6 +442,159 @@
       "answer_word_count": 36,
       "approved_by": "automated-source-and-answer-test",
       "approved_at": "2026-11-26T16:49:34.896Z"
+    },
+    {
+      "question": "Hvem skal jeg kontakte, hvis der opstår en akut vandskade i mit badeværelse?",
+      "document_id": "9703ea0c9cec90a6",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 53,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Er det tilladt at have husdyr i lejligheden?",
+      "document_id": "7cf05b95e8d5a01a",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 12,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvordan får jeg fat i en ekstra nøglebrik, hvis jeg mangler en?",
+      "document_id": "564eb2bb69dae7ff",
+      "source_file": "noegler/index.html",
+      "source_url": "/noegler/",
+      "answer_word_count": 49,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Må jeg udleje min lejlighed via Airbnb?",
+      "document_id": "766b8c07b4dcf66e",
+      "source_file": "udlejning/index.html",
+      "source_url": "/udlejning/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvem har ansvaret for vedligeholdelse af mine indvendige vandrør i badeværelset?",
+      "document_id": "465ffeea80f6d77b",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 63,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Skal jeg varsle mine naboer, hvis jeg skal have lukket for vandet i forbindelse med VVS-arbejde?",
+      "document_id": "465ffeea80f6d77b",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 50,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Må jeg opbevare min barnevogn i trappeopgangen?",
+      "document_id": "692314bd890445e2",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 31,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvad gør jeg, hvis en fremmed parkerer på min faste parkeringsplads?",
+      "document_id": "be0f688d6378011f",
+      "source_file": "parkering/index.html",
+      "source_url": "/parkering/",
+      "answer_word_count": 25,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Er det tilladt at opsætte en parabol på min altan?",
+      "document_id": "04f17b59d499bf79",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 22,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Er det muligt at leje et ekstra kælderrum, hvis der er ledige?",
+      "document_id": "bb7952d2e44d9499",
+      "source_file": "kaelderrum/index.html",
+      "source_url": "/kaelderrum/",
+      "answer_word_count": 49,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvordan forholder jeg mig, hvis jeg hører støj fra naboens musikinstrumenter sent om aftenen?",
+      "document_id": "f857c24a7e2fd061",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 36,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Skal kælderdørene ved trappeopgange altid holdes låst?",
+      "document_id": "b62bed061a40ddc5",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 9,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvor skal farligt affald som maling og batterier afleveres?",
+      "document_id": "f8073092ba984c45",
+      "source_file": "affald-storskrald/index.html",
+      "source_url": "/affald-storskrald/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvordan bliver jeg skrevet op til en parkeringsplads?",
+      "document_id": "deeb133f1cca3cb4",
+      "source_file": "parkering/index.html",
+      "source_url": "/parkering/",
+      "answer_word_count": 19,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvad skal jeg gøre, hvis jeg ønsker at udleje min ejerlejlighed?",
+      "document_id": "6dd751b0d16f93e6",
+      "source_file": "udlejning/index.html",
+      "source_url": "/udlejning/",
+      "answer_word_count": 74,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Må jeg fodre fugle på ejendommens område?",
+      "document_id": "339345fc42039ac6",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 17,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvad er den maksimale grænse for korttidsudlejning pr. år?",
+      "document_id": "766b8c07b4dcf66e",
+      "source_file": "udlejning/index.html",
+      "source_url": "/udlejning/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-27T16:34:20.093Z"
     }
   ]
 }

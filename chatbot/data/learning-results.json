@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "tested_at": "2026-11-26T16:49:34.896Z",
-  "generated": 17,
-  "approved": 10,
-  "rejected": 7,
-  "total_unique_attempted": 402,
+  "tested_at": "2026-11-27T16:34:20.093Z",
+  "generated": 28,
+  "approved": 17,
+  "rejected": 11,
+  "total_unique_attempted": 430,
   "attempted_questions": [
     "Hvad gælder om Forside | E/F Skyttegårdvej/Vigerslevvej?",
     "Hvor kan jeg læse om Forside | E/F Skyttegårdvej/Vigerslevvej?",
@@ -407,60 +407,121 @@
     "Hvordan tilmelder jeg mig ventelisten til et ekstra kælderrum?",
     "Er det tilladt at drive erhverv fra min lejlighed eller mit kælderrum?",
     "Hvordan fungerer affaldssortering, og hvor finder jeg miljøskabet?",
-    "Hvem skal jeg kontakte, hvis jeg oplever støj fra mine naboer?"
+    "Hvem skal jeg kontakte, hvis jeg oplever støj fra mine naboer?",
+    "Hvem skal jeg kontakte, hvis der opstår en akut vandskade i mit badeværelse?",
+    "Er det tilladt at have husdyr i lejligheden?",
+    "Hvordan får jeg fat i en ekstra nøglebrik, hvis jeg mangler en?",
+    "Må jeg udleje min lejlighed via Airbnb?",
+    "Hvor meget affald må jeg stille i storskraldsrummet ved Skyttegårdvej 5?",
+    "Hvem har ansvaret for vedligeholdelse af mine indvendige vandrør i badeværelset?",
+    "Skal jeg varsle mine naboer, hvis jeg skal have lukket for vandet i forbindelse med VVS-arbejde?",
+    "Må jeg opbevare min barnevogn i trappeopgangen?",
+    "Hvad gør jeg, hvis en fremmed parkerer på min faste parkeringsplads?",
+    "Er det tilladt at opsætte en parabol på min altan?",
+    "Hvem skal jeg henvende mig til, hvis jeg ser hærværk på ejendommens fællesarealer?",
+    "Hvor ofte bør jeg lufte ud for at undgå fugtskader i min lejlighed?",
+    "Hvem skal jeg kontakte, hvis jeg mener, at der ikke bliver gjort ordentligt rent i opgangen?",
+    "Er det muligt at leje et ekstra kælderrum, hvis der er ledige?",
+    "Hvordan forholder jeg mig, hvis jeg hører støj fra naboens musikinstrumenter sent om aftenen?",
+    "Hvilke regler gælder for brug af lejligheden til erhverv?",
+    "Skal kælderdørene ved trappeopgange altid holdes låst?",
+    "Hvad er fremgangsmåden, hvis jeg ønsker at stille et forslag til den næste generalforsamling?",
+    "Hvem sørger for maling af vinduerne udvendigt?",
+    "Hvordan anmelder jeg en skade, der er dækket af foreningens bygningsforsikring?",
+    "Hvor skal farligt affald som maling og batterier afleveres?",
+    "Kan jeg fremleje mit kælderrum til andre?",
+    "Hvordan bliver jeg skrevet op til en parkeringsplads?",
+    "Hvad skal jeg gøre, hvis jeg ønsker at udleje min ejerlejlighed?",
+    "Er jeg forpligtet til at give adgang til min lejlighed, hvis der skal udføres vedligeholdelse af fællesrør?",
+    "Må jeg fodre fugle på ejendommens område?",
+    "Hvad er den maksimale grænse for korttidsudlejning pr. år?",
+    "Hvad koster det at få udleveret en ekstra nøglebrik?"
   ],
   "approved_questions": [
-    "Hvem kan jeg kontakte, hvis der er en uvedkommende bil, der holder på min faste parkeringsplads?",
-    "Jeg har opdaget en vandskade på badeværelset – hvad gør jeg?",
-    "Hvordan fungerer reglerne for Airbnb og korttidsudlejning?",
-    "Er det tilladt at opbevare min cykel i trappeopgangen?",
-    "Hvem har ansvaret for vedligeholdelse af de vandrette rørforgreninger inde i min lejlighed?",
-    "Skal jeg varsle naboerne, hvis jeg får lavet VVS-arbejde, der kræver lukning af vandet?",
-    "Hvor finder jeg information om kommende generalforsamlinger?",
-    "Hvordan tilmelder jeg mig ventelisten til et ekstra kælderrum?",
-    "Hvordan fungerer affaldssortering, og hvor finder jeg miljøskabet?",
-    "Hvem skal jeg kontakte, hvis jeg oplever støj fra mine naboer?"
+    "Hvem skal jeg kontakte, hvis der opstår en akut vandskade i mit badeværelse?",
+    "Er det tilladt at have husdyr i lejligheden?",
+    "Hvordan får jeg fat i en ekstra nøglebrik, hvis jeg mangler en?",
+    "Må jeg udleje min lejlighed via Airbnb?",
+    "Hvem har ansvaret for vedligeholdelse af mine indvendige vandrør i badeværelset?",
+    "Skal jeg varsle mine naboer, hvis jeg skal have lukket for vandet i forbindelse med VVS-arbejde?",
+    "Må jeg opbevare min barnevogn i trappeopgangen?",
+    "Hvad gør jeg, hvis en fremmed parkerer på min faste parkeringsplads?",
+    "Er det tilladt at opsætte en parabol på min altan?",
+    "Er det muligt at leje et ekstra kælderrum, hvis der er ledige?",
+    "Hvordan forholder jeg mig, hvis jeg hører støj fra naboens musikinstrumenter sent om aftenen?",
+    "Skal kælderdørene ved trappeopgange altid holdes låst?",
+    "Hvor skal farligt affald som maling og batterier afleveres?",
+    "Hvordan bliver jeg skrevet op til en parkeringsplads?",
+    "Hvad skal jeg gøre, hvis jeg ønsker at udleje min ejerlejlighed?",
+    "Må jeg fodre fugle på ejendommens område?",
+    "Hvad er den maksimale grænse for korttidsudlejning pr. år?"
   ],
   "rejected_questions": [
     {
-      "question": "Hvordan får jeg fat i en ekstra nøglebrik, og hvad koster det?",
+      "question": "Hvor meget affald må jeg stille i storskraldsrummet ved Skyttegårdvej 5?",
       "reason": "wrong_or_missing_source",
-      "expected": "Nyhedsbrev nr.8",
-      "actual": "Nøglekort & nøglebrikker - bestilling, priser og sikkerhed"
+      "expected": "Husorden - punkt 1",
+      "actual": "Affald og storskrald - skralderum, storskraldsrum og miljøskab"
     },
     {
-      "question": "Hvor ofte skal jeg lufte ud for at undgå fugtskader i min lejlighed?",
+      "question": "Hvem skal jeg henvende mig til, hvis jeg ser hærværk på ejendommens fællesarealer?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Husorden - punkt 12",
+      "actual": "Vedligeholdelse - udvendig og fælles vedligeholdelse (foreningen)"
+    },
+    {
+      "question": "Hvor ofte bør jeg lufte ud for at undgå fugtskader i min lejlighed?",
       "reason": "wrong_or_missing_source",
       "expected": "Husorden - punkt 8",
       "actual": "Vedligeholdelse - forsikring og anmeldelse af skader"
     },
     {
-      "question": "Hvor skal jeg stille mit storskrald, som f.eks. gamle møbler?",
-      "reason": "low_question_quality"
+      "question": "Hvem skal jeg kontakte, hvis jeg mener, at der ikke bliver gjort ordentligt rent i opgangen?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Affald og udenomsarealer - rengøring (Hebsoe)",
+      "actual": "Kontakt - Bestyrelse & Administration (DEAS)"
     },
     {
-      "question": "Hvordan sikrer jeg mig, at min dør til kælderen altid er låst?",
+      "question": "Hvilke regler gælder for brug af lejligheden til erhverv?",
       "reason": "wrong_or_missing_source",
-      "expected": "Husorden - punkt 3",
+      "expected": "Vedtægter - § 33. Anvendelse og salg",
+      "actual": "Kontakt - Bestyrelse & Administration (DEAS)"
+    },
+    {
+      "question": "Hvad er fremgangsmåden, hvis jeg ønsker at stille et forslag til den næste generalforsamling?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Vedtægter - § 10. Forslag",
+      "actual": "Generalforsamling - referater, regnskab, budget og prisblad"
+    },
+    {
+      "question": "Hvem sørger for maling af vinduerne udvendigt?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Vedligeholdelse - indvendig vedligeholdelse (ejers ansvar)",
+      "actual": "Vedtægter - § 26. Ejerforeningens vedligeholdelsespligt"
+    },
+    {
+      "question": "Hvordan anmelder jeg en skade, der er dækket af foreningens bygningsforsikring?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Kontakt - Forsikring & Skader (Protector Forsikring)",
+      "actual": "Vedligeholdelse - forsikring og anmeldelse af skader"
+    },
+    {
+      "question": "Kan jeg fremleje mit kælderrum til andre?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Udlejning - Airbnb, korttidsudlejning og forbud",
       "actual": "Kælderrum - leje af ekstra kælderrum, venteliste og vilkår"
     },
     {
-      "question": "Hvor lang tid skal jeg holde min nøglebrik mod tastaturet for at åbne døren?",
+      "question": "Er jeg forpligtet til at give adgang til min lejlighed, hvis der skal udføres vedligeholdelse af fællesrør?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Vedtægter - § 29. Adgang og reetablering",
+      "actual": "Vedligeholdelse - udvendig og fælles vedligeholdelse (foreningen)"
+    },
+    {
+      "question": "Hvad koster det at få udleveret en ekstra nøglebrik?",
       "reason": "wrong_or_missing_source",
       "expected": "Nyhedsbrev nr.8",
       "actual": "Nøglekort & nøglebrikker - bestilling, priser og sikkerhed"
-    },
-    {
-      "question": "Må jeg opsætte en parabol eller antenne på min altan?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Husorden - punkt 2",
-      "actual": null
-    },
-    {
-      "question": "Er det tilladt at drive erhverv fra min lejlighed eller mit kælderrum?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Vedtægter - § 33. Anvendelse og salg",
-      "actual": "Kælderrum - leje af ekstra kælderrum, venteliste og vilkår"
     }
   ]
 }
