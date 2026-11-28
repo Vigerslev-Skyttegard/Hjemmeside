@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "tested_at": "2026-11-27T16:34:20.093Z",
-  "generated": 28,
-  "approved": 17,
-  "rejected": 11,
-  "total_unique_attempted": 430,
+  "tested_at": "2026-11-28T15:26:11.938Z",
+  "generated": 24,
+  "approved": 18,
+  "rejected": 6,
+  "total_unique_attempted": 454,
   "attempted_questions": [
     "Hvad gælder om Forside | E/F Skyttegårdvej/Vigerslevvej?",
     "Hvor kan jeg læse om Forside | E/F Skyttegårdvej/Vigerslevvej?",
@@ -435,93 +435,88 @@
     "Er jeg forpligtet til at give adgang til min lejlighed, hvis der skal udføres vedligeholdelse af fællesrør?",
     "Må jeg fodre fugle på ejendommens område?",
     "Hvad er den maksimale grænse for korttidsudlejning pr. år?",
-    "Hvad koster det at få udleveret en ekstra nøglebrik?"
+    "Hvad koster det at få udleveret en ekstra nøglebrik?",
+    "Hvorfor skal jeg lufte ud i lejligheden 5-10 minutter flere gange dagligt?",
+    "Hvad gør jeg, hvis en fremmed bil holder på min parkeringsplads?",
+    "Må jeg have min hund eller kat boende i lejligheden?",
+    "Hvem skal jeg kontakte, hvis der er en vandskade i mit badeværelse?",
+    "Hvordan tilmelder jeg mig ventelisten til en parkeringsplads?",
+    "Er det tilladt at udleje min lejlighed via Airbnb?",
+    "Hvor skal jeg placere storskrald som møbler?",
+    "Skal kælderdørene altid være låste?",
+    "Hvornår skal forslag til den ordinære generalforsamling være indsendt?",
+    "Hvad koster det at tilkøbe en ekstra nøglebrik?",
+    "Hvem skal jeg kontakte, hvis jeg ønsker at leje et ekstra kælderrum?",
+    "Er jeg forpligtet til at male mine vinduer indvendigt, når foreningen maler dem udvendigt?",
+    "Må jeg opsætte en parabolantenne på min altan?",
+    "Hvordan anmelder jeg en skade, der er dækket af ejendommens bygningsforsikring?",
+    "Hvem står for rengøring af opgangene?",
+    "Hvordan forholder jeg mig til støj fra naboens musikinstrumenter?",
+    "Hvad gør jeg, hvis min nøglebrik er defekt?",
+    "Er det tilladt at fodre fugle på ejendommens område?",
+    "Hvordan får jeg registreret en lejer, når jeg udlejer min lejlighed?",
+    "Hvem har ansvaret for vedligeholdelse af blandingsbatteriet i mit køkken?",
+    "Hvor finder jeg referater fra tidligere generalforsamlinger?",
+    "Hvad gør jeg ved et akut rørbrud i min lejlighed?",
+    "Hvor mange dage må jeg udleje via Airbnb om året?",
+    "Hvornår skal den ordinære generalforsamling afholdes?"
   ],
   "approved_questions": [
-    "Hvem skal jeg kontakte, hvis der opstår en akut vandskade i mit badeværelse?",
-    "Er det tilladt at have husdyr i lejligheden?",
-    "Hvordan får jeg fat i en ekstra nøglebrik, hvis jeg mangler en?",
-    "Må jeg udleje min lejlighed via Airbnb?",
-    "Hvem har ansvaret for vedligeholdelse af mine indvendige vandrør i badeværelset?",
-    "Skal jeg varsle mine naboer, hvis jeg skal have lukket for vandet i forbindelse med VVS-arbejde?",
-    "Må jeg opbevare min barnevogn i trappeopgangen?",
-    "Hvad gør jeg, hvis en fremmed parkerer på min faste parkeringsplads?",
-    "Er det tilladt at opsætte en parabol på min altan?",
-    "Er det muligt at leje et ekstra kælderrum, hvis der er ledige?",
-    "Hvordan forholder jeg mig, hvis jeg hører støj fra naboens musikinstrumenter sent om aftenen?",
-    "Skal kælderdørene ved trappeopgange altid holdes låst?",
-    "Hvor skal farligt affald som maling og batterier afleveres?",
-    "Hvordan bliver jeg skrevet op til en parkeringsplads?",
-    "Hvad skal jeg gøre, hvis jeg ønsker at udleje min ejerlejlighed?",
-    "Må jeg fodre fugle på ejendommens område?",
-    "Hvad er den maksimale grænse for korttidsudlejning pr. år?"
+    "Hvorfor skal jeg lufte ud i lejligheden 5-10 minutter flere gange dagligt?",
+    "Hvad gør jeg, hvis en fremmed bil holder på min parkeringsplads?",
+    "Må jeg have min hund eller kat boende i lejligheden?",
+    "Hvem skal jeg kontakte, hvis der er en vandskade i mit badeværelse?",
+    "Hvordan tilmelder jeg mig ventelisten til en parkeringsplads?",
+    "Er det tilladt at udleje min lejlighed via Airbnb?",
+    "Hvor skal jeg placere storskrald som møbler?",
+    "Skal kælderdørene altid være låste?",
+    "Hvem skal jeg kontakte, hvis jeg ønsker at leje et ekstra kælderrum?",
+    "Hvem står for rengøring af opgangene?",
+    "Hvordan forholder jeg mig til støj fra naboens musikinstrumenter?",
+    "Hvad gør jeg, hvis min nøglebrik er defekt?",
+    "Er det tilladt at fodre fugle på ejendommens område?",
+    "Hvordan får jeg registreret en lejer, når jeg udlejer min lejlighed?",
+    "Hvem har ansvaret for vedligeholdelse af blandingsbatteriet i mit køkken?",
+    "Hvor finder jeg referater fra tidligere generalforsamlinger?",
+    "Hvad gør jeg ved et akut rørbrud i min lejlighed?",
+    "Hvor mange dage må jeg udleje via Airbnb om året?"
   ],
   "rejected_questions": [
     {
-      "question": "Hvor meget affald må jeg stille i storskraldsrummet ved Skyttegårdvej 5?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Husorden - punkt 1",
-      "actual": "Affald og storskrald - skralderum, storskraldsrum og miljøskab"
-    },
-    {
-      "question": "Hvem skal jeg henvende mig til, hvis jeg ser hærværk på ejendommens fællesarealer?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Husorden - punkt 12",
-      "actual": "Vedligeholdelse - udvendig og fælles vedligeholdelse (foreningen)"
-    },
-    {
-      "question": "Hvor ofte bør jeg lufte ud for at undgå fugtskader i min lejlighed?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Husorden - punkt 8",
-      "actual": "Vedligeholdelse - forsikring og anmeldelse af skader"
-    },
-    {
-      "question": "Hvem skal jeg kontakte, hvis jeg mener, at der ikke bliver gjort ordentligt rent i opgangen?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Affald og udenomsarealer - rengøring (Hebsoe)",
-      "actual": "Kontakt - Bestyrelse & Administration (DEAS)"
-    },
-    {
-      "question": "Hvilke regler gælder for brug af lejligheden til erhverv?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Vedtægter - § 33. Anvendelse og salg",
-      "actual": "Kontakt - Bestyrelse & Administration (DEAS)"
-    },
-    {
-      "question": "Hvad er fremgangsmåden, hvis jeg ønsker at stille et forslag til den næste generalforsamling?",
+      "question": "Hvornår skal forslag til den ordinære generalforsamling være indsendt?",
       "reason": "wrong_or_missing_source",
       "expected": "Vedtægter - § 10. Forslag",
       "actual": "Generalforsamling - referater, regnskab, budget og prisblad"
     },
     {
-      "question": "Hvem sørger for maling af vinduerne udvendigt?",
+      "question": "Hvad koster det at tilkøbe en ekstra nøglebrik?",
       "reason": "wrong_or_missing_source",
-      "expected": "Vedligeholdelse - indvendig vedligeholdelse (ejers ansvar)",
-      "actual": "Vedtægter - § 26. Ejerforeningens vedligeholdelsespligt"
+      "expected": "Nyhedsbrev nr.8",
+      "actual": "Nøglekort & nøglebrikker - bestilling, priser og sikkerhed"
     },
     {
-      "question": "Hvordan anmelder jeg en skade, der er dækket af foreningens bygningsforsikring?",
+      "question": "Er jeg forpligtet til at male mine vinduer indvendigt, når foreningen maler dem udvendigt?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Vedtægter - § 27. Ejernes vedligeholdelsespligt",
+      "actual": "Vedligeholdelse - indvendig vedligeholdelse (ejers ansvar)"
+    },
+    {
+      "question": "Må jeg opsætte en parabolantenne på min altan?",
+      "reason": "wrong_or_missing_source",
+      "expected": "Husorden - punkt 2",
+      "actual": null
+    },
+    {
+      "question": "Hvordan anmelder jeg en skade, der er dækket af ejendommens bygningsforsikring?",
       "reason": "wrong_or_missing_source",
       "expected": "Kontakt - Forsikring & Skader (Protector Forsikring)",
       "actual": "Vedligeholdelse - forsikring og anmeldelse af skader"
     },
     {
-      "question": "Kan jeg fremleje mit kælderrum til andre?",
+      "question": "Hvornår skal den ordinære generalforsamling afholdes?",
       "reason": "wrong_or_missing_source",
-      "expected": "Udlejning - Airbnb, korttidsudlejning og forbud",
-      "actual": "Kælderrum - leje af ekstra kælderrum, venteliste og vilkår"
-    },
-    {
-      "question": "Er jeg forpligtet til at give adgang til min lejlighed, hvis der skal udføres vedligeholdelse af fællesrør?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Vedtægter - § 29. Adgang og reetablering",
-      "actual": "Vedligeholdelse - udvendig og fælles vedligeholdelse (foreningen)"
-    },
-    {
-      "question": "Hvad koster det at få udleveret en ekstra nøglebrik?",
-      "reason": "wrong_or_missing_source",
-      "expected": "Nyhedsbrev nr.8",
-      "actual": "Nøglekort & nøglebrikker - bestilling, priser og sikkerhed"
+      "expected": "Vedtægter - § 9. Ordinær generalforsamling",
+      "actual": "Generalforsamling - referater, regnskab, budget og prisblad"
     }
   ]
 }

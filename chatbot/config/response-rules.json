@@ -595,6 +595,168 @@
       "answer_word_count": 43,
       "approved_by": "automated-source-and-answer-test",
       "approved_at": "2026-11-27T16:34:20.093Z"
+    },
+    {
+      "question": "Hvorfor skal jeg lufte ud i lejligheden 5-10 minutter flere gange dagligt?",
+      "document_id": "265961b8d0027ed3",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 35,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvad gør jeg, hvis en fremmed bil holder på min parkeringsplads?",
+      "document_id": "37045bd9fac779f9",
+      "source_file": "parkering/index.html",
+      "source_url": "/parkering/",
+      "answer_word_count": 20,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Må jeg have min hund eller kat boende i lejligheden?",
+      "document_id": "7cf05b95e8d5a01a",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 12,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvem skal jeg kontakte, hvis der er en vandskade i mit badeværelse?",
+      "document_id": "97716fde28e88baa",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 77,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvordan tilmelder jeg mig ventelisten til en parkeringsplads?",
+      "document_id": "deeb133f1cca3cb4",
+      "source_file": "parkering/index.html",
+      "source_url": "/parkering/",
+      "answer_word_count": 19,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Er det tilladt at udleje min lejlighed via Airbnb?",
+      "document_id": "766b8c07b4dcf66e",
+      "source_file": "udlejning/index.html",
+      "source_url": "/udlejning/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvor skal jeg placere storskrald som møbler?",
+      "document_id": "f8073092ba984c45",
+      "source_file": "affald-storskrald/index.html",
+      "source_url": "/affald-storskrald/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Skal kælderdørene altid være låste?",
+      "document_id": "b62bed061a40ddc5",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 9,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvem skal jeg kontakte, hvis jeg ønsker at leje et ekstra kælderrum?",
+      "document_id": "bb7952d2e44d9499",
+      "source_file": "kaelderrum/index.html",
+      "source_url": "/kaelderrum/",
+      "answer_word_count": 49,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvem står for rengøring af opgangene?",
+      "document_id": "f8073092ba984c45",
+      "source_file": "affald-storskrald/index.html",
+      "source_url": "/affald-storskrald/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvordan forholder jeg mig til støj fra naboens musikinstrumenter?",
+      "document_id": "f857c24a7e2fd061",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 36,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvad gør jeg, hvis min nøglebrik er defekt?",
+      "document_id": "564eb2bb69dae7ff",
+      "source_file": "noegler/index.html",
+      "source_url": "/noegler/",
+      "answer_word_count": 49,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Er det tilladt at fodre fugle på ejendommens område?",
+      "document_id": "339345fc42039ac6",
+      "source_file": "Husorden.pdf",
+      "source_url": "/Husorden.pdf",
+      "answer_word_count": 17,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvordan får jeg registreret en lejer, når jeg udlejer min lejlighed?",
+      "document_id": "6dd751b0d16f93e6",
+      "source_file": "udlejning/index.html",
+      "source_url": "/udlejning/",
+      "answer_word_count": 74,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvem har ansvaret for vedligeholdelse af blandingsbatteriet i mit køkken?",
+      "document_id": "465ffeea80f6d77b",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 50,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvor finder jeg referater fra tidligere generalforsamlinger?",
+      "document_id": "c8d4296f8fc49b52",
+      "source_file": "generalforsamling/index.html",
+      "source_url": "/generalforsamling/",
+      "answer_word_count": 27,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvad gør jeg ved et akut rørbrud i min lejlighed?",
+      "document_id": "9703ea0c9cec90a6",
+      "source_file": "vedligeholdelse/index.html",
+      "source_url": "/vedligeholdelse/",
+      "answer_word_count": 53,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
+    },
+    {
+      "question": "Hvor mange dage må jeg udleje via Airbnb om året?",
+      "document_id": "766b8c07b4dcf66e",
+      "source_file": "udlejning/index.html",
+      "source_url": "/udlejning/",
+      "answer_word_count": 43,
+      "approved_by": "automated-source-and-answer-test",
+      "approved_at": "2026-11-28T15:26:11.938Z"
     }
   ]
 }
